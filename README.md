@@ -49,6 +49,30 @@ xelatex saheed-ml.tex
 The compilation will generate a PDF file with the same name as the .tex file:
 - `saheed-ml.pdf`
 
+## Converting to Word Format
+
+If you need a Word document version of your resume:
+
+### Method 1: PDF to Word (Recommended)
+```bash
+# First compile to PDF
+tectonic saheed-ml.tex
+
+# Install pdf2docx if not already installed
+pip install pdf2docx
+
+# Convert PDF to Word
+python -c "
+from pdf2docx import Converter
+cv = Converter('saheed-ml.pdf')
+cv.convert('saheed-ml.docx')
+cv.close()
+print('Conversion complete: saheed-ml.docx created')
+"
+```
+
+This method preserves the two-column layout and formatting much better than direct LaTeX to Word conversion.
+
 ## Notes
 - The resume uses the `moderncv` class with custom styling
 - Fonts used: Avant (sans-serif family)
