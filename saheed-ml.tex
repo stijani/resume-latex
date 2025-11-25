@@ -26,6 +26,14 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 
+% Strict text wrapping and column controls
+\usepackage{microtype}  % Better text spacing and hyphenation
+
+% Prevent overfull hboxes - force text wrapping
+\sloppy
+\tolerance=9999         % Allow more spacing variation to prevent overflow
+\emergencystretch=3pt   % Allow extra stretch in emergency
+
 % Define simple location symbol
 \newcommand{\mappin}{\textbf{\textcolor{color1}{📍}}}
 
@@ -35,6 +43,16 @@
 % Define bullet styles for each column
 \newcommand{\leftcolbullets}{\renewcommand*{\labelitemi}{\textbullet}}
 \newcommand{\rightcolbullets}{\renewcommand*{\labelitemi}{$\circ$}}
+
+% Configure itemize for better text wrapping
+\usepackage{enumitem}
+\setlist[itemize]{
+    leftmargin=*,
+    itemsep=0pt,
+    parsep=0pt,
+    topsep=2pt,
+    partopsep=0pt
+}
 
 % Define light grey color for subheadings
 \definecolor{lightgrey}{RGB}{128,128,128}
@@ -102,7 +120,7 @@
 \maketitle
 \vspace{-9.0mm}
 \begin{tabularx}{\textwidth}{@{}p{0.35\textwidth}@{\hspace{6pt}}p{0.2\textwidth}@{\hspace{6pt}}p{0.15\textwidth}@{\hspace{6pt}}p{0.2\textwidth}@{}}
-    \centering\emailsymbol\enspace \emaillink{saheed.tijani58@gmail.com} & \centering\mobilephonesymbol\enspace (+61) 451029247 & \centering\textbf{in}\enspace \href{https://www.linkedin.com/in/stijani/}{stijani} & \centering\mappin\enspace Melbourne, Australia
+    \centering\emailsymbol\enspace \emaillink{saheed.tijani58@gmail.com} & \centering\mobilephonesymbol\enspace (+61) 451029247 & \centering\textbf{in}\enspace \href{https://www.linkedin.com/in/saheedtijani/}{saheedtijani} & \centering\mappin\enspace Melbourne, Australia
 \end{tabularx}
 \vspace{-2.0mm}
 
@@ -111,13 +129,7 @@
 \setlength{\columnsep}{40pt}  % Increase column separation (default is ~10pt)
 \begin{paracol}{2}
 \section{SUMMARY}
-Outcome-driven Machine Learning and advanced analytics engineer with over a decade 
-of experience working in the technology sector, specializing in ML/AI and data science. 
-With expertise in model development and productionization, I have delivered innovative 
-AI-driven solutions to business challenges across various sectors, including established 
-and startup enterprises, driving growth and operational efficiency. With a strong commitment 
-to continuous learning and improvement, I am excited to contribute to a team at the 
-forefront of technological innovation.
+Working at the intersection of cutting-edge AI and software engineering, I bring 10+ years of delivering high-impact solutions across multiple industries. Skilled in translating research into scalable production systems and managing the full ML/AI lifecycle from PoC to deployment. Passionate about partnering with stakeholders to solve real business problems through innovative, measurable solutions.
 
 \section{EXPERIENCE}
 \leftcolbullets
@@ -213,10 +225,11 @@ forefront of technological innovation.
 \end{itemize}
 \vspace{3.5mm}
 
-{\color{lightgrey}\textbf{Modelling Frameworks:}}
+{\color{lightgrey}\textbf{Machine Learning Frameworks:}}
 \begin{itemize}
     \item PyTorch, TensorFlow, Scikit-Learn
-    \item Openmmlab, Hugging Face Sagemaker, ClearML etc
+    \item Hugging Face Transformers, OpenMMLab, ONNX
+    \item MLflow, Airflow, Sagemaker
 \end{itemize}
 \vspace{3.5mm}
 
@@ -230,10 +243,17 @@ forefront of technological innovation.
 
 {\color{lightgrey}\textbf{Data Analytics/Engineering:}}
 \begin{itemize}
-    \item Data warehousing, ETL,
-    \item Databricks, CI/CD, Airflow,
-    \item Pandas, NumPy, PySpark,
-    \item PowerBi, Tableau, Matplotlib
+    \item Data warehousing, ETL, Databricks
+    \item Pandas, NumPy, PySpark, Dask
+    \item PowerBi, Tableau, Matplotlib, Plotly
+\end{itemize}
+\vspace{3.5mm}
+
+{\color{lightgrey}\textbf{MLOps \& Monitoring:}}
+\begin{itemize}
+    \item Model Monitoring: Datadog, CloudWatch, ClearML
+    \item Experiment Tracking: Weights \& Biases, MLflow
+    \item CI/CD: GitHub Actions, CodeBuild, Docker
 \end{itemize}
 \vspace{3.5mm}
 
@@ -245,37 +265,40 @@ forefront of technological innovation.
 
 {\color{lightgrey}\textbf{Generative AI:}}
 \begin{itemize}
-    \item RAG/prompt Engineering,
-    \item OpenAI, LangChain, Ollama and open source LLMs – Llama3, GPT3, Phi
+    \item RAG/prompt Engr, Vector DBs, Agentic AI Solutions
+    \item Commercial LLMs: OpenAI GPT, Claude, Gemini
+    \item LLM Orchestration: LangChain, LlamaIndex, Multi-Agent Systems
+    \item Open Source LLMs: Llama, Qwen, DeepSeek, Phi
+    \item Fine-tuning: LoRA, Parameter-Efficient Methods, Custom Training
 \end{itemize}
 
 \section{CERTIFICATIONS}
 \begin{itemize}
-    \item {\color{lightgrey}\textbf{AWS ML SME}} - Amazon Web Services - 2024
+    \item \textit{AWS ML SME} - {\color{lightgrey}Amazon Web Services - 2024}
     \vspace{2mm}
-    \item {\color{lightgrey}\textbf{Machine Learning Specialist Certification}} - Amazon Web Services - 2020
+    \item \textit{Machine Learning Specialist Certification} - {\color{lightgrey}Amazon Web Services - 2020}
     \vspace{2mm}
-    \item {\color{lightgrey}\textbf{Certified Solutions Architect}} - Amazon Web Services - 2020
+    \item \textit{Certified Solutions Architect} - {\color{lightgrey}Amazon Web Services - 2020}
     \vspace{2mm}
-    \item {\color{lightgrey}\textbf{Deep Learning Specialization}} - Coursera - Andrew Ng - 2019
+    \item \textit{Deep Learning Specialization} - {\color{lightgrey}Coursera - Andrew Ng - 2019}
 \end{itemize}
 
 \section{EDUCATION}
 \begin{itemize}
-    \item \textbf{PhD.} {\color{lightgrey}\textbf{Distributed Machine Learning \& AI Systems}} - {\color{lightgrey}Deakin University, Melbourne, Australia (2026)}
+    \item PhD. {\color{lightgrey}\textit{Distributed Machine Learning \& AI Systems}} - {\color{lightgrey}Deakin University, Melbourne, Australia (2026)}
     \vspace{2mm}
-    \item \textbf{MSc.} {\color{lightgrey}\textbf{Signal Processing and Telecommunications}} - {\color{lightgrey}Leeds University, UK (2014)}
+    \item MSc. {\color{lightgrey}\textit{Signal Processing \& Telecommunications}} - {\color{lightgrey}Leeds University, UK (2014)}
     \vspace{2mm}
-    \item \textbf{BSc.} {\color{lightgrey}\textbf{Electrical and Electronic Engineering}} - {\color{lightgrey}University of Lagos, Nigeria (2009)}
+    \item BSc. {\color{lightgrey}\textit{Electrical and Electronic Engineering}} - {\color{lightgrey}University of Lagos, Nigeria (2009)}
 \end{itemize}
 
 \section{PUBLICATIONS}
 \begin{itemize}
-    \item \textbf{\href{https://ieeexplore.ieee.org/document/9533719}{Federated learning with extreme label skew: a data extension approach}} - {\color{lightgrey}2021 International Joint Conference on Neural Networks (IJCNN), IEEE, 2021.}
+    \item \textit{\href{https://ieeexplore.ieee.org/document/9533719}{Federated learning with extreme label skew: a data extension approach}} - {\color{lightgrey}2021 International Joint Conference on Neural Networks (IJCNN), IEEE, 2021.}
     \vspace{2mm}
-    \item \textbf{GRADIANCE: Guiding Local Iterations with Unbiased Steps Gradients for Accelerated Convergence in Federated Learning} - {\color{lightgrey}Under review, 2025.}
+    \item \textit{GRADIANCE: Guiding Local Iterations with Unbiased Steps Gradients for Accelerated Convergence in Federated Learning} - {\color{lightgrey}Under review, 2025.}
     \vspace{2mm}
-    \item \textbf{LiBRA: A Secure Lightweight Byzantine-Resilient Aggregation Framework} - {\color{lightgrey}Under review, 2025.}
+    \item \textit{LiBRA: A Secure Lightweight Byzantine-Resilient Aggregation Framework} - {\color{lightgrey}Under review, 2025.}
 \end{itemize}
 \end{paracol}
 
