@@ -1,121 +1,6 @@
-%%%%%%%%%%%%%%%%%
-% This is a two-column CV template based on moderncv.cls
-% (v1.0, May 16 2024) written by Genki Ogaki (rockstarogk@gmail.com). Compiles with XeLaTeX.
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%%%%%%%%%%%%%%%
+% Main resume file - includes all components
+\input{src/preamble}
 
-% environment
-\documentclass[10pt,a4paper]{moderncv}
-\moderncvtheme[blue]{banking}
-\nopagenumbers{}
-
-\usepackage[T1]{fontenc}
-\usepackage{inputenc}
-\usepackage[scale=0.9]{geometry}
-\usepackage{tabularx}
-\usepackage{avant}
-\renewcommand{\familydefault}{\sfdefault}
-\usepackage{paracol}
-\usepackage{tikz}
-\usepackage{xcolor}
-
-% Strict text wrapping and column controls
-\usepackage{microtype}  % Better text spacing and hyphenation
-
-% Prevent overfull hboxes - force text wrapping
-\sloppy
-\tolerance=9999         % Allow more spacing variation to prevent overflow
-\emergencystretch=3pt   % Allow extra stretch in emergency
-
-% Define simple location symbol
-\newcommand{\mappin}{\textbf{\textcolor{color1}{📍}}}
-
-% macro
-\renewcommand*{\labelitemi}{\textbullet}
-
-% Define bullet styles for each column
-\newcommand{\leftcolbullets}{\renewcommand*{\labelitemi}{\textbullet}}
-\newcommand{\rightcolbullets}{\renewcommand*{\labelitemi}{$\circ$}}
-
-% Configure itemize for better text wrapping
-\usepackage{enumitem}
-\setlist[itemize]{
-    leftmargin=*,
-    itemsep=3pt,
-    parsep=0pt,
-    topsep=2pt,
-    partopsep=0pt
-}
-
-% Define light grey color for subheadings
-\definecolor{lightgrey}{RGB}{128,128,128}
-% Define lighter grey for dates
-\definecolor{dategrey}{RGB}{160,160,160}
-% Define very light grey for section dividers
-\definecolor{dividercolor}{RGB}{220,220,220}
-% Define dark grey for company names
-\definecolor{companygrey}{RGB}{80,80,80}
-
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
-
-\newcommand*{\experienceentry}[5][1.5mm]{
-    \subsection{#2} \vspace{-1.5mm}
-    \begin{tabularx}{\columnwidth}{LR}
-        {\itshape #3} & {\itshape #4, #5}
-    \end{tabularx}
-    \par\addvspace{#1}
-}
-
-\newcommand*{\educationentry}[4][0.5mm]{
-    \begin{tabularx}{\columnwidth}{LR}
-        {\bfseries #3} & {\bfseries #4} \\
-    \end{tabularx}
-    {\itshape #2}
-    \par\addvspace{#1}
-}
-
-\newcommand*{\scoreentry}[3][2.5mm]{
-    {\bfseries #2} \\
-    {\itshape #3}
-    \par\addvspace{#1}
-}
-
-% preamble
-\firstname{Saheed}
-\familyname{Tijani}
-% \address{Tokyo, Japan}{}
-
-% Customize name font size to 24pt, bold, and left align
-\makeatletter
-\renewcommand*{\namestyle}[1]{{\fontsize{24}{28}\selectfont\bfseries\raggedright\textcolor{color1}{#1}}}
-\makeatother
-
-% Customize section headers to be bold and 10pt
-\makeatletter
-\renewcommand*{\sectionstyle}[1]{{\fontsize{10}{12}\selectfont\bfseries\textcolor{color1}{#1}}}
-\makeatother
-
-% Add improved spacing for sections
-\makeatletter
-\renewcommand*{\section}[1]{%
-  \par\addvspace{4ex}%
-  \phantomsection{}% reset the anchor for hyperrefs
-  \addcontentsline{toc}{section}{#1}%
-  \cvitem[0em]{}{\strut\sectionstyle{#1}}%
-  \par\nobreak\addvspace{2ex}\@afterheading%
-}
-\makeatother
-
-% document
 \begin{document}
 \maketitle
 \vspace{-9.0mm}
@@ -126,179 +11,39 @@
 
 % Start two-column layout with paracol
 \setcolumnwidth{0.62\textwidth,0.35\textwidth}
-\setlength{\columnsep}{40pt}  % Increase column separation (default is ~10pt)
+\setlength{\columnsep}{40pt}
 \begin{paracol}{2}
 \section{SUMMARY}
-Working at the intersection of cutting-edge AI and software engineering, I bring 10+ years of delivering high-impact solutions across multiple industries. Skilled in translating research into scalable production systems and managing the full ML/AI lifecycle from PoC to deployment. Passionate about partnering with stakeholders to solve real business problems through innovative, measurable solutions.
+\input{src/summary}
 
 \section{EXPERIENCE}
 \leftcolbullets
-\textbf{Senior Machine Learning Engineer} | {\color{companygrey}Disco.ac} | {\color{dategrey}10/2024 – Present}
+\input{src/experience-disco}
 
-\begin{itemize}
-    \item Delivered AI-powered transcription system with scalable microservices architecture, achieving over 95\% WER and driving 20\% increase in user acceptance rates.
-    \item Built and deployed transformer-based source separation pipeline isolating vocals, instruments, and stems with high fidelity, enabling creative workflows for 400K+ global content creators.
-    \item Architected multimodal natural language search system using audio, lyrics, and tag embeddings with vector databases, processing 40TB+ daily spectrograms at sub-150ms latency and enhancing content discovery.
-\end{itemize}
-\vspace{4.5mm}
+\input{src/experience-powercor}
 
-% \textbf{Senior Machine Learning Engineer} | {\color{companygrey}Infarm.io} | {\color{dategrey}07/2024 – Present}
+\input{src/experience-summit}
 
-% \begin{itemize}
-%     \item Designed \& implemented ML algorithms tailored for specific tasks such as weed detection in grasses, animal counting \& tag reading.
-%     \item Developed robust inferencing pipelines that process drone-captured images supplied from farms to generate prescriptions for intelligent weed spraying, reducing soil contamination and lowering costs.
-%     \item Oversaw data acquisition, storage, annotation, and distribution to aid preprocessing – including transformation \& feature engineering, in preparation for ML model training \& batch inferencing.
-%     \item Developed evaluation metrics and mechanisms to assess and select ML models based on efficacy in terms of accuracy and latency.
-% \end{itemize}
-% \vspace{4.5mm}
+\input{src/experience-elenium}
 
-\textbf{Senior Machine Learning Engineer} | {\color{companygrey}Powercor} | {\color{dategrey}03/2022 – 08/2024}
-
-\begin{itemize}
-    \item Built an AI system that automated the inspection of power distribution assets, resulting in a 1000x speed increase, improved assessment accuracy, and significant cost savings. The system integrates deep learning, computer vision, and heuristics in a multistage pipeline.
-    \item Engineered robust, self-contained pipelines for reproducible model training experiments, production inferencing, and ETL data processing.
-    \item Developed CI/CD pipelines for iterative deployment and monitoring of ML models and data solutions in public clouds - enhancing efficiency and scalability.
-    \item Developed automated tools to monitor and report on model performance, identifying and addressing performance degradation or data anomalies as the data evolves in production.
-    \item Collaborated with stakeholders to develop multiple POCs for advanced analytics initiatives aimed at enhancing data-driven decision-making and process automation - including building an RAG/LLM solution that leveraged internal PDF manuals hastening access to information and improving workflow.
-\end{itemize}
-\vspace{4.5mm}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Machine Learning Engineer} | {\color{companygrey}Summit Innovation} | {\color{dategrey}01/2020 – 03/2022}
-
-\begin{itemize}
-    \item Led the effort to build the AI component of the company's drive-through queue management system. I developed \& deployed a deep-learning-based object detection algorithm to detect, localize, and track vehicles across the drive-through lane.
-    \item Developed deep learning models for computer vision use cases (classification, object detection, and segmentation) and engineered a model registry for API access using Git and DVC.
-    \item Created the company's first data acquisition solution for extracting, processing, and storing images from hundreds of CCTV cameras across restaurants in Australia and North America. Implemented robust cloud storage and version control systems that ensured data integrity, change tracking, and team collaboration.
-    \item Collaborated with the company's top management to document R\&D efforts and progress for government research grant applications.
-\end{itemize}
-\vspace{4.5mm}
-
-\textbf{Machine Learning Engineer} | {\color{companygrey}Elenium Automation} | {\color{dategrey}07/2019 – 12/2020}
-
-\begin{itemize}
-    \item Led the AI enhancement of the airport bag-drop system by developing a deep-learning model to detect luggage with straps that could disrupt aircraft loading. The system prompts travellers to place such luggage in plastic tubs, improving reliability, reducing personnel intervention, and speeding up check-in times.
-    \item Developed guidelines for various annotation tasks and engaged external contractors to securely label the data, thereby creating versatile data resources for the company.
-    \item Reporting directly to the CTO, I initiated a broad range of research initiatives with potent POCs and contributed to strategic planning, business development, proposal writing, and product development.
-\end{itemize}
-\vspace{4.5mm}
-
-\textbf{Data Scientist} | {\color{companygrey}National Broadband Network (NBN)} | {\color{dategrey}10/2017 – 07/2019}
-
-\begin{itemize}
-    \item Consulted internally with multiple teams and leveraged historical service order data to build a system that predicted daily order volumes, fostering field resource management efficiency and reduced operational costs.
-    \item Engineered features from network device logs to develop predictive models for equipment fault prediction, which activated pre-emptive maintenance of network nodes, reducing service downtime.
-    \item Conducted product and software feature change analytics through hypothesis testing and A/B statistical evaluation, enhancing various teams' ability to make informed, data-driven decisions.
-\end{itemize}
-% \textbf{Data Analyst \& Engineer} | {\color{companygrey}Overseas Companies} | {\color{dategrey}2010 – 2017}
-% 
-% I held various positions overseas with telecommunication giants like Etisalat, Huawei, and Ceragon, working as a Data Analyst, Data Modeller, and Network Planner. I provided data-driven insights to multiple network engineering operations teams, aiding:
-% \begin{itemize}
-%     \item Network service demand forecasting and traffic monitoring
-%     \item Equipment fault prediction based on historical logs for pre-emptive maintenance
-% \end{itemize}
+\input{src/experience-nbn}
 
 % Switch to RIGHT column for new content
 \switchcolumn
 
 \section{SKILLS \& TOOLS}
 \rightcolbullets
-
-{\color{lightgrey}\textbf{Collaboration:}}
-\begin{itemize}
-    \item Stakeholder engagement
-    \item Requirement gathering
-    \item Peer code review
-    \item Integration testing
-    \item Project Management (using JIRA)
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Programming Languages:}}
-\begin{itemize}
-    \item Python
-    \item C++
-    \item SQL
-    \item Java
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Machine Learning Frameworks:}}
-\begin{itemize}
-    \item PyTorch, TensorFlow, Scikit-Learn
-    \item Hugging Face Transformers, OpenMMLab, ONNX
-    \item MLflow, Airflow, Sagemaker
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Modelling Algorithms:}}
-\begin{itemize}
-    \item CNN, R-CNN \& YOLO
-    \item Transformers \& ViT
-    \item Traditional ML like XGBoost, Random Forest, Kmeans
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Data Analytics/Engineering:}}
-\begin{itemize}
-    \item Data warehousing, ETL, Databricks
-    \item Pandas, NumPy, PySpark, Dask
-    \item PowerBi, Tableau, Matplotlib, Plotly
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{MLOps \& Monitoring:}}
-\begin{itemize}
-    \item Model Monitoring: Datadog, CloudWatch, ClearML
-    \item Experiment Tracking: Weights \& Biases, MLflow
-    \item CI/CD: GitHub Actions, CodeBuild, Docker
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Public Cloud Expertise:}}
-\begin{itemize}
-    \item AWS, Azure \& GCP
-\end{itemize}
-\vspace{3.5mm}
-
-{\color{lightgrey}\textbf{Generative AI:}}
-\begin{itemize}
-    \item RAG/prompt Engr, Vector DBs, Agentic AI Solutions
-    \item Commercial LLMs: OpenAI GPT, Claude, Gemini
-    \item LLM Orchestration: LangChain, LlamaIndex, Multi-Agent Systems
-    \item Open Source LLMs: Llama, Qwen, DeepSeek, Phi
-    \item Fine-tuning: LoRA, Parameter-Efficient Methods, Custom Training
-\end{itemize}
+\input{src/skills}
 
 \section{CERTIFICATIONS}
-\begin{itemize}
-    \item \textit{AWS ML SME} - {\color{lightgrey}Amazon Web Services}
-    %\vspace{2mm}
-    \item \textit{Machine Learning Specialist} - {\color{lightgrey}Amazon Web Services}
-    %\vspace{2mm}
-    \item \textit{Certified Solutions Architect} - {\color{lightgrey}Amazon Web Services}
-    %\vspace{2mm}
-    \item \textit{Deep Learning Specialization} - {\color{lightgrey}Coursera - Andrew Ng}
-\end{itemize}
+\input{src/certifications}
 
 \section{EDUCATION}
-\begin{itemize}
-    \item PhD. {\color{lightgrey}\textit{Distributed Machine Learning \& AI Systems}} - {\color{lightgrey}Deakin University, Vic., Australia (on going - part-time)}
-    %\vspace{2mm}
-    \item MSc. {\color{lightgrey}\textit{Signal Processing \& Telecommunications}} - {\color{lightgrey}Leeds University, UK (2014)}
-    %\vspace{2mm}
-    \item BSc. {\color{lightgrey}\textit{Electrical and Electronic Engineering}} - {\color{lightgrey}University of Lagos, Nigeria (2009)}
-\end{itemize}
+\input{src/education}
 
 \section{PUBLICATIONS}
-\begin{itemize}
-    \item \textit{\href{https://ieeexplore.ieee.org/document/9533879}{Federated learning with extreme label skew: a data extension approach}} - {\color{lightgrey}2021 International Joint Conference on Neural Networks (IJCNN), IEEE, 2021.}
-    %\vspace{2mm}
-    \item \textit{GRADIANCE: Guiding Local Iterations with Unbiased Steps Gradients for Accelerated Convergence in Federated Learning} - {\color{lightgrey}Under review, 2025.}
-    %\vspace{2mm}
-    \item \textit{LiBRA: A Secure Lightweight Byzantine-Resilient Aggregation Framework} - {\color{lightgrey}Under review, 2025.}
-\end{itemize}
+\input{src/publications}
+
 \end{paracol}
 
 \end{document}

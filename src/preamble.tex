@@ -1,0 +1,103 @@
+% environment
+\documentclass[10pt,a4paper]{moderncv}
+\moderncvtheme[blue]{banking}
+\nopagenumbers{}
+
+\usepackage[T1]{fontenc}
+\usepackage{inputenc}
+\usepackage[scale=0.9]{geometry}
+\usepackage{tabularx}
+\usepackage{avant}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{paracol}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+% Strict text wrapping and column controls
+\usepackage{microtype}  % Better text spacing and hyphenation
+
+% Prevent overfull hboxes - force text wrapping
+\sloppy
+\tolerance=9999         % Allow more spacing variation to prevent overflow
+\emergencystretch=3pt   % Allow extra stretch in emergency
+
+% Define simple location symbol
+\newcommand{\mappin}{\textbf{\textcolor{color1}{📍}}}
+
+% macro
+\renewcommand*{\labelitemi}{\textbullet}
+
+% Define bullet styles for each column
+\newcommand{\leftcolbullets}{\renewcommand*{\labelitemi}{\textbullet}}
+\newcommand{\rightcolbullets}{\renewcommand*{\labelitemi}{$\circ$}}
+
+% Configure itemize for better text wrapping
+\usepackage{enumitem}
+\setlist[itemize]{
+    leftmargin=*,
+    itemsep=3pt,
+    parsep=0pt,
+    topsep=2pt,
+    partopsep=0pt
+}
+
+% Define light grey color for subheadings
+\definecolor{lightgrey}{RGB}{128,128,128}
+% Define lighter grey for dates
+\definecolor{dategrey}{RGB}{160,160,160}
+% Define very light grey for section dividers
+\definecolor{dividercolor}{RGB}{220,220,220}
+% Define dark grey for company names
+\definecolor{companygrey}{RGB}{80,80,80}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\newcommand*{\experienceentry}[5][1.5mm]{
+    \subsection{#2} \vspace{-1.5mm}
+    \begin{tabularx}{\columnwidth}{LR}
+        {\itshape #3} & {\itshape #4, #5}
+    \end{tabularx}
+    \par\addvspace{#1}
+}
+
+\newcommand*{\educationentry}[4][0.5mm]{
+    \begin{tabularx}{\columnwidth}{LR}
+        {\bfseries #3} & {\bfseries #4} \\
+    \end{tabularx}
+    {\itshape #2}
+    \par\addvspace{#1}
+}
+
+\newcommand*{\scoreentry}[3][2.5mm]{
+    {\bfseries #2} \\
+    {\itshape #3}
+    \par\addvspace{#1}
+}
+
+% preamble
+\firstname{Saheed}
+\familyname{Tijani}
+% \address{Tokyo, Japan}{}
+
+% Customize name font size to 24pt, bold, and left align
+\makeatletter
+\renewcommand*{\namestyle}[1]{{\fontsize{24}{28}\selectfont\bfseries\raggedright\textcolor{color1}{#1}}}
+\makeatother
+
+% Customize section headers to be bold and 10pt
+\makeatletter
+\renewcommand*{\sectionstyle}[1]{{\fontsize{10}{12}\selectfont\bfseries\textcolor{color1}{#1}}}
+\makeatother
+
+% Add improved spacing for sections
+\makeatletter
+\renewcommand*{\section}[1]{%
+  \par\addvspace{4ex}%
+  \phantomsection{}% reset the anchor for hyperrefs
+  \addcontentsline{toc}{section}{#1}%
+  \cvitem[0em]{}{\strut\sectionstyle{#1}}%
+  \par\nobreak\addvspace{2ex}\@afterheading%
+}
+\makeatother
